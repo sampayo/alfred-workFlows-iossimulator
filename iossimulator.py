@@ -58,3 +58,6 @@ def devices():
     workflowDevices.append(workflow.Item(title=device.name, subtitle=device.runtime, autocomplete=device.name, valid=True, uid=device.udid))
   workflow.Item.generate_output(workflowDevices)
 
+if __name__ == '__main__':
+  devices()  
+

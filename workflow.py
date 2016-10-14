@@ -40,5 +40,5 @@ class Item:
 		for item in items:
 			root.append(item.item_xml())
 
-		print('<?xml version="1.0" encoding="utf-8"?>\n')
+		print('<?xml version="1.0" encoding="utf-8"?>')
 		print(ET.tostring(root).encode('utf-8'))

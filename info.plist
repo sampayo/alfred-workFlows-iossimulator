@@ -17,11 +17,64 @@
 	<key>name</key>
 	<string>iOS Simulator</string>
 	<key>objects</key>
-	<array/>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>sims</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for simulators</string>
+				<key>script</key>
+				<string>import iossimulator
+iossimulator.devices()</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Searching for simulators</string>
+				<key>title</key>
+				<string>iOS Simulator</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
-	<dict/>
+	<dict>
+		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>160</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+	</dict>
 	<key>webaddress</key>
 	<string>ricardosampayo.com</string>
 </dict>

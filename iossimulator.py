@@ -1,7 +1,8 @@
 import json
 import workflow
-
-from subprocess import check_output
+import subprocess
+import os
+import sys
 
 class DeviceType:
     IPhone, IPad, Other = ("iPhone", "iPad", "other")
@@ -37,7 +38,7 @@ class Device:
     return "name: %s id: %s state: %s runtime: %s type: %s" % (self.name, self.udid, self.state, self.runtime, self.type)
 
 def __populate_devices():
-  devicesJson = check_output(["/usr/bin/xcrun", "simctl", "list", "-j", "devices"])
+  devicesJson = subprocess.check_output(["/usr/bin/xcrun", "simctl", "list", "-j", "devices"])
   allDevices = json.loads(devicesJson)["devices"]
   iosDevices = [device for device in allDevices.items() if (device[0].find("iOS") >= 0)]
 
@@ -55,8 +56,18 @@ def devices():
   workflowDevices = []
 
   for device in devices:
-    workflowDevices.append(workflow.Item(title=device.name, subtitle=device.runtime, autocomplete=device.name, valid=True, uid=device.udid))
+    workflowDevices.append(workflow.Item(title=device.name, subtitle=device.runtime, arg=device.udid, autocomplete=device.name, valid=True, uid=device.udid))
   workflow.Item.generate_output(workflowDevices)
+
+def launch_device(udid):
+  devices = [d for d in __populate_devices() if d.udid == udid]
+  deviceName = devices[0].name if devices else ""
+
+  ads = open(os.devnull, 'w') # hiding the output
+  subprocess.call(["xcrun", "instruments", "-w", udid], stdout=ads, stderr=subprocess.STDOUT)
+
+  sys.stdout.write(deviceName)
+  sys.stdout.flush()
 
 if __name__ == '__main__':
   devices()  

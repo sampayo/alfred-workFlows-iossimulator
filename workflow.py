@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import sys
 
 class Item:
 	def __init__(self, title, subtitle="", icon=None, arg=None, autocomplete=None, valid=False, uid=None):
@@ -39,6 +40,7 @@ class Item:
 		root = ET.Element('items')
 		for item in items:
 			root.append(item.item_xml())
-
-		print('<?xml version="1.0" encoding="utf-8"?>')
-		print(ET.tostring(root).encode('utf-8'))
+        
+		sys.stdout.write('<?xml version="1.0" encoding="utf-8"?>\n')
+		sys.stdout.write(ET.tostring(root).encode('utf-8'))
+		sys.stdout.flush()

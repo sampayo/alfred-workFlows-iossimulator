@@ -51,6 +51,10 @@ def __populate_devices():
 
   return devices
 
+def __device_with_id(udid):
+  devices = [d for d in __populate_devices() if d.udid == udid]
+  return devices[0] if devices else None
+
 def devices(name=None):
   devices = __populate_devices()
   devices = devices if name is None else [d for d in __populate_devices() if d.name.lower().find(name.lower()) >= 0]
@@ -62,11 +66,21 @@ def devices(name=None):
   workflow.Item.generate_output(workflowDevices)
 
 def launch_device(udid):
-  devices = [d for d in __populate_devices() if d.udid == udid]
-  deviceName = devices[0].name if devices else ""
+  device = __device_with_id(udid)
+  deviceName = device.name if device is not None else ""
 
   devnull = open(os.devnull, 'w') # hiding the output
   subprocess.call(["xcrun", "instruments", "-w", udid], stdout=devnull, stderr=subprocess.STDOUT)
+
+  sys.stdout.write(deviceName)
+  sys.stdout.flush()
+
+def erase_device(udid):
+  device = __device_with_id(udid)
+  deviceName = device.name if device is not None else ""
+
+  devnull = open(os.devnull, 'w') # hiding the output
+  subprocess.call(["xcrun", "simctl", "erase", udid], stdout=devnull, stderr=subprocess.STDOUT)
 
   sys.stdout.write(deviceName)
   sys.stdout.flush()

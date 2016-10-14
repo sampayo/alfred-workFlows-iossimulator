@@ -51,8 +51,10 @@ def __populate_devices():
 
   return devices
 
-def devices():
+def devices(name=None):
   devices = __populate_devices()
+  devices = devices if name is None else [d for d in __populate_devices() if d.name.lower().find(name.lower()) >= 0]
+
   workflowDevices = []
 
   for device in devices:
@@ -63,12 +65,12 @@ def launch_device(udid):
   devices = [d for d in __populate_devices() if d.udid == udid]
   deviceName = devices[0].name if devices else ""
 
-  ads = open(os.devnull, 'w') # hiding the output
-  subprocess.call(["xcrun", "instruments", "-w", udid], stdout=ads, stderr=subprocess.STDOUT)
+  devnull = open(os.devnull, 'w') # hiding the output
+  subprocess.call(["xcrun", "instruments", "-w", udid], stdout=devnull, stderr=subprocess.STDOUT)
 
   sys.stdout.write(deviceName)
   sys.stdout.flush()
 
 if __name__ == '__main__':
-  devices()  
+  devices()
 

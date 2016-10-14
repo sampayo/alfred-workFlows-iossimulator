@@ -106,7 +106,7 @@ iossimulator.launch_device('{query}')</string>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>keyword</key>
@@ -120,14 +120,14 @@ iossimulator.launch_device('{query}')</string>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Searching for simulators</string>
+				<string>Searching for {query}...</string>
 				<key>script</key>
 				<string>import iossimulator
-iossimulator.devices()
+iossimulator.devices("{query}")
 
 </string>
 				<key>scriptargtype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
@@ -137,7 +137,7 @@ iossimulator.devices()
 				<key>type</key>
 				<integer>3</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>

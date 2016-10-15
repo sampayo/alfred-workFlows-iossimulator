@@ -3,6 +3,7 @@ import subprocess
 import os
 import sys
 import core.device as Device
+import core.application as Application
 
 def devices(name=None):
   devices = Device.devices()
@@ -33,6 +34,24 @@ def erase_device(udid):
 
   sys.stdout.write(deviceName)
   sys.stdout.flush()
+
+def application_with_device_id(name=None):
+  deviceId = os.environ['deviceId']
+
+  applications = Application.application_with_device_id(deviceId)
+
+  workflowApplications = []
+  for application in applications:
+    workflowApplications.append(workflow.Item(
+      title=application.bundleDisplayName,
+      subtitle="Reveal in find viewer",
+      icon= application.icons[0] if application.icons else None,
+      arg=application.bundleID,
+      autocomplete=application.bundleDisplayName,
+      valid=True,
+      uid=application.bundleID))
+  workflow.Item.generate_output(workflowApplications)
+
 
 if __name__ == '__main__':
   devices()

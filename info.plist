@@ -8,6 +8,19 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>229FF4ED-D9D3-4927-B4F8-7148E4675F21</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
 		<array>
 			<dict>
@@ -32,7 +45,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
+				<string>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -67,6 +80,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>229FF4ED-D9D3-4927-B4F8-7148E4675F21</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Ricardo Sampayo</string>
@@ -78,6 +104,27 @@
 	<string>iOS Simulator</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Launching {query} ...</string>
+				<key>title</key>
+				<string>Simulation Launched</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>493B8D97-6C65-4389-B746-AA06E8DF6AA9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -105,23 +152,26 @@ iossimulator.launch_device('{query}')</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
+				<key>concurrently</key>
 				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Launching {query} ...</string>
-				<key>title</key>
-				<string>Simulation Launched</string>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>import iossimulator
+iossimulator.erase_device('{query}')</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>493B8D97-6C65-4389-B746-AA06E8DF6AA9</string>
+			<string>E80FA768-8C3B-464C-90DD-27307A0D8BD0</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -143,30 +193,6 @@ iossimulator.launch_device('{query}')</string>
 			<string>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>import iossimulator
-iossimulator.erase_device('{query}')</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>3</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>E80FA768-8C3B-464C-90DD-27307A0D8BD0</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -217,8 +243,52 @@ iossimulator.devices("{query}")
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>applications</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for {query}...</string>
+				<key>script</key>
+				<string>import iossimulator
+iossimulator.application_with_device_id("{query}")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Searching for applications</string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>229FF4ED-D9D3-4927-B4F8-7148E4675F21</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
-				<string>'{query}', {allvars}</string>
+				<string>'{query}', {var:deviceId}</string>
 				<key>cleardebuggertext</key>
 				<false/>
 				<key>processoutputs</key>
@@ -231,27 +301,60 @@ iossimulator.devices("{query}")
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>deviceId</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>229FF4ED-D9D3-4927-B4F8-7148E4675F21</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<integer>320</integer>
+			<key>ypos</key>
+			<integer>290</integer>
+		</dict>
 		<key>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
-			<integer>610</integer>
+			<integer>770</integer>
 			<key>ypos</key>
 			<integer>130</integer>
 		</dict>
 		<key>493B8D97-6C65-4389-B746-AA06E8DF6AA9</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
-			<integer>610</integer>
+			<integer>770</integer>
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
 		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
 			<integer>60</integer>
 			<key>ypos</key>
@@ -259,24 +362,37 @@ iossimulator.devices("{query}")
 		</dict>
 		<key>7F3196CF-981B-42F5-9778-87D99D4BEF3D</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>520</integer>
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
 		<key>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<integer>610</integer>
 			<key>ypos</key>
-			<integer>280</integer>
+			<integer>310</integer>
 		</dict>
 		<key>E80FA768-8C3B-464C-90DD-27307A0D8BD0</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>520</integer>
 			<key>ypos</key>
 			<integer>130</integer>
+		</dict>
+		<key>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>320</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

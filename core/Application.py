@@ -44,7 +44,7 @@ def __bundlePathsIndex(deviceId):
 
 	return bundlePathsIndex
 
-def find_application_with_device_id(deviceId):
+def application_with_device_id(deviceId):
 	path = __builtpath(__applicationPath.format(deviceId))
 	listApplications = glob.glob(path)
 
@@ -84,7 +84,7 @@ def __all_application():
 	applications = []
 
 	for device in allDevices:
-		applications = applications + (find_application_with_device_id(device.udid))
+		applications = applications + (application_with_device_id(device.udid))
 
 	return applications
 

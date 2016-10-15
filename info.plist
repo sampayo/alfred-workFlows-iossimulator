@@ -525,25 +525,27 @@ reset_data_application("{query}")</string>
 			<key>xpos</key>
 			<integer>570</integer>
 			<key>ypos</key>
-			<integer>770</integer>
+			<integer>740</integer>
 		</dict>
 		<key>229FF4ED-D9D3-4927-B4F8-7148E4675F21</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
+			<key>note</key>
+			<string>Applications</string>
 			<key>xpos</key>
 			<integer>320</integer>
 			<key>ypos</key>
-			<integer>440</integer>
+			<integer>410</integer>
 		</dict>
 		<key>38EDC1C1-F1AE-4F96-BD4B-56D51AE655B2</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>xpos</key>
-			<integer>810</integer>
+			<integer>760</integer>
 			<key>ypos</key>
-			<integer>630</integer>
+			<integer>600</integer>
 		</dict>
 		<key>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</key>
 		<dict>
@@ -572,7 +574,7 @@ reset_data_application("{query}")</string>
 			<key>xpos</key>
 			<integer>570</integer>
 			<key>ypos</key>
-			<integer>490</integer>
+			<integer>460</integer>
 		</dict>
 		<key>6CB99F87-0A6E-4A81-8CB7-F9D7DF05F464</key>
 		<dict>
@@ -583,7 +585,7 @@ reset_data_application("{query}")</string>
 			<key>xpos</key>
 			<integer>570</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>320</integer>
 		</dict>
 		<key>753DFEE2-5CC0-4314-98A4-AF62C8F9FF32</key>
 		<dict>
@@ -594,16 +596,18 @@ reset_data_application("{query}")</string>
 			<key>xpos</key>
 			<integer>570</integer>
 			<key>ypos</key>
-			<integer>630</integer>
+			<integer>600</integer>
 		</dict>
 		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
+			<key>note</key>
+			<string>Devices</string>
 			<key>xpos</key>
 			<integer>60</integer>
 			<key>ypos</key>
-			<integer>250</integer>
+			<integer>180</integer>
 		</dict>
 		<key>7F3196CF-981B-42F5-9778-87D99D4BEF3D</key>
 		<dict>
@@ -621,9 +625,9 @@ reset_data_application("{query}")</string>
 			<key>colorindex</key>
 			<integer>8</integer>
 			<key>xpos</key>
-			<integer>810</integer>
+			<integer>760</integer>
 			<key>ypos</key>
-			<integer>780</integer>
+			<integer>740</integer>
 		</dict>
 		<key>E80FA768-8C3B-464C-90DD-27307A0D8BD0</key>
 		<dict>
@@ -643,7 +647,7 @@ reset_data_application("{query}")</string>
 			<key>xpos</key>
 			<integer>250</integer>
 			<key>ypos</key>
-			<integer>470</integer>
+			<integer>440</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -30,6 +30,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>7F3196CF-981B-42F5-9778-87D99D4BEF3D</key>
 		<array>
@@ -49,16 +59,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -267,9 +267,9 @@ iossimulator.devices("{query}")
 		<key>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</key>
 		<dict>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>470</integer>
 			<key>ypos</key>
-			<integer>320</integer>
+			<integer>280</integer>
 		</dict>
 		<key>E80FA768-8C3B-464C-90DD-27307A0D8BD0</key>
 		<dict>

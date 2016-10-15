@@ -12,7 +12,15 @@ def devices(name=None):
   workflowDevices = []
 
   for device in devices:
-    workflowDevices.append(workflow.Item(title=device.name, subtitle=device.runtime, arg=device.udid, autocomplete=device.name, valid=True, uid=device.udid))
+    modifierSubtitles = { workflow.ItemMod.Ctrl : device.runtime }
+    workflowDevices.append(workflow.Item(
+      title=device.name,
+      subtitle=device.runtime,
+      arg=device.udid,
+      autocomplete=device.name,
+      valid=True,
+      uid=device.udid,
+      modifierSubtitles=modifierSubtitles))
   workflow.Item.generate_output(workflowDevices)
 
 def launch_device(udid):

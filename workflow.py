@@ -3,8 +3,11 @@ import sys
 from os import environ
 from plistlib import readPlist, writePlist
 
+class ItemMod:
+	  Cmd, Ctrl, Alt, Shift, Fn = ('cmd', 'ctrl', 'alt', 'shift', 'fn')
+
 class Item:
-	def __init__(self, title, subtitle="", icon=None, arg=None, autocomplete=None, valid=False, uid=None):
+	def __init__(self, title, subtitle="", icon=None, arg=None, autocomplete=None, valid=False, uid=None, modifierSubtitles=None):
 		self.title = title
 		self.subtitle = subtitle
 		self.icon = icon
@@ -12,6 +15,7 @@ class Item:
 		self.autocomplete = autocomplete
 		self.valid = valid
 		self.uid = uid
+		self.modifierSubtitles = modifierSubtitles if modifierSubtitles is not None else {}
 
 	def item_xml(self):
 		attrib = { "valid": "yes" if self.valid else "no" }
@@ -30,6 +34,12 @@ class Item:
 		if self.subtitle:
 			subtitle = ET.SubElement(item, "subtitle")
 			subtitle.text = self.subtitle
+
+		mods = (ItemMod.Cmd, ItemMod.Ctrl, ItemMod.Alt, ItemMod.Shift, ItemMod.Fn)
+		for mod in mods:
+			if mod in self.modifierSubtitles:
+				subtitle = ET.SubElement(item, "subtitle", { "mod": mod })
+				subtitle.text = self.modifierSubtitles[mod]
 
 		if self.icon:
 			icon = ET.SubElement(item, "icon")

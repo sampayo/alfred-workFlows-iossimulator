@@ -1,5 +1,7 @@
 import xml.etree.ElementTree as ET
 import sys
+from os import environ
+from plistlib import readPlist, writePlist
 
 class Item:
 	def __init__(self, title, subtitle="", icon=None, arg=None, autocomplete=None, valid=False, uid=None):
@@ -44,3 +46,18 @@ class Item:
 		sys.stdout.write('<?xml version="1.0" encoding="utf-8"?>\n')
 		sys.stdout.write(ET.tostring(root).encode('utf-8'))
 		sys.stdout.flush()
+
+def set_variable(name, value):
+	info = readPlist('info.plist')
+	# Set a variable
+	info['variables'][name] = value
+
+	# Save changes
+	writePlist(info, 'info.plist')
+
+def get_variable(name):
+	if name in environ:
+		return environ[name]
+	else:
+		return None
+

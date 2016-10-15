@@ -36,7 +36,7 @@ def erase_device(udid):
   sys.stdout.flush()
 
 def application_with_device_id(name=None):
-  deviceId = os.environ['deviceId']
+  deviceId = workflow.get_variable('deviceId')
 
   applications = Application.application_with_device_id(deviceId)
 

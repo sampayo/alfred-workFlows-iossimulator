@@ -87,7 +87,16 @@ def uninstall_application(bundleId):
 
   if application is not None:
     sys.stdout.write("{0} was deleted.".format(application.bundleDisplayName))
-    sys.stdout.flush()  
+    sys.stdout.flush()
+
+def reset_data_application(bundleId):
+  deviceId = workflow.get_variable('deviceId')
+  application = Application.application_with_device_and_bundle(deviceId, bundleId)
+  Application.reset_data(deviceId, bundleId)
+
+  if application is not None:
+    sys.stdout.write(application.bundleDisplayName)
+    sys.stdout.flush()
 
 if __name__ == '__main__':
   devices()

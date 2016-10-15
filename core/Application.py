@@ -1,12 +1,13 @@
 import json
 import os
 import glob
+from shutil import rmtree
 import biplist.biplist as biplist
 from device import devices
 
 __metadataplist = ".com.apple.mobile_container_manager.metadata.plist"
 __applicationPath = "Library/Developer/CoreSimulator/Devices/{0}/data/Containers/Bundle/Application/*/*.app"
-__bundlePlistPath = "Library/Developer/CoreSimulator/Devices/{0}/data/Containers/Bundle/Application/*/" + __metadataplist
+__bundlePlistPath = "Library/Developer/CoreSimulator/Devices/{0}/data/Containers/Data/Application/*/" + __metadataplist
 
 class Application():
 	def __init__(self, bundleDisplayName, bundleID, bundleShortVersion, bundleVersion, path, icons):
@@ -32,7 +33,6 @@ def __builtpath(path):
 def __bundlePathsIndex(deviceId):
 	path = __builtpath(__bundlePlistPath.format(deviceId))	
 	listMetadata = glob.glob(path)
-	print path
 	bundlePathsIndex = {}
 
 	for metadataPath in listMetadata:
@@ -97,6 +97,26 @@ def application_with_device_and_bundle(deviceId, bundleId):
 
 def bundle_path(deviceId, bundleId):
 	return __bundlePathsIndex(deviceId)[bundleId]
+
+def reset_data(deviceId, bundleId):
+	path = bundle_path(deviceId, bundleId)
+
+	def __delete_content(path):
+		files = glob.glob("{0}*".format(path)) + glob.glob("{0}.*".format(path)) # special case for hiding files
+		for filePath in files:
+			if (os.path.exists(filePath)):
+				if (os.path.isdir(filePath)):
+					rmtree(filePath, True)
+				else:
+					os.unlink(filePath)
+
+	directoryPath = "{0}/Documents/".format(path)
+	libraryPath = "{0}/Library/".format(path)
+	tmpPath = "{0}/tmp/".format(path)
+
+	__delete_content(directoryPath)
+	__delete_content(libraryPath)
+	__delete_content(tmpPath)
 
 def __all_application():
 	allDevices = devices()

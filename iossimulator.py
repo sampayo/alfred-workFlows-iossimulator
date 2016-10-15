@@ -72,6 +72,21 @@ def launch_application(bundleId):
   application = Application.application_with_device_and_bundle(deviceId, bundleId)
   if application is not None:
     sys.stdout.write("Launching {0}.".format(application.bundleDisplayName))
+    sys.stdout.flush()
+
+def uninstall_application(bundleId):
+  deviceId = workflow.get_variable('deviceId')
+  application = Application.application_with_device_and_bundle(deviceId, bundleId)
+
+  # Launch simulator
+  devnull = open(os.devnull, 'w') # hiding the output
+  subprocess.call(["xcrun", "instruments", "-w", deviceId], stdout=devnull, stderr=subprocess.STDOUT)
+
+  # Launch app in simulator
+  subprocess.call(["xcrun", "simctl", "uninstall", deviceId, bundleId])
+
+  if application is not None:
+    sys.stdout.write("{0} was deleted.".format(application.bundleDisplayName))
     sys.stdout.flush()  
 
 if __name__ == '__main__':

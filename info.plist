@@ -30,6 +30,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>753DFEE2-5CC0-4314-98A4-AF62C8F9FF32</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Uninstall app</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</key>
 		<array/>
@@ -38,6 +48,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>493B8D97-6C65-4389-B746-AA06E8DF6AA9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>753DFEE2-5CC0-4314-98A4-AF62C8F9FF32</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>38EDC1C1-F1AE-4F96-BD4B-56D51AE655B2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -142,6 +165,27 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Simulator Reset</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -166,23 +210,26 @@ iossimulator.erase_device('{query}')</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
+				<key>concurrently</key>
 				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Simulator Reset</string>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>import iossimulator
+iossimulator.launch_device('{query}')</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</string>
+			<string>7F3196CF-981B-42F5-9778-87D99D4BEF3D</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -204,30 +251,6 @@ iossimulator.erase_device('{query}')</string>
 			<string>493B8D97-6C65-4389-B746-AA06E8DF6AA9</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>import iossimulator
-iossimulator.launch_device('{query}')</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>3</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>7F3196CF-981B-42F5-9778-87D99D4BEF3D</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -388,6 +411,51 @@ bundle_path("{query}")</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Uninstall Application</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>38EDC1C1-F1AE-4F96-BD4B-56D51AE655B2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>from iossimulator import uninstall_application
+uninstall_application("{query}")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>753DFEE2-5CC0-4314-98A4-AF62C8F9FF32</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>'{query}', {var:deviceId}</string>
 				<key>cleardebuggertext</key>
@@ -410,11 +478,20 @@ bundle_path("{query}")</string>
 		<key>229FF4ED-D9D3-4927-B4F8-7148E4675F21</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>5</integer>
+			<integer>8</integer>
 			<key>xpos</key>
 			<integer>320</integer>
 			<key>ypos</key>
 			<integer>440</integer>
+		</dict>
+		<key>38EDC1C1-F1AE-4F96-BD4B-56D51AE655B2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
+			<key>xpos</key>
+			<integer>810</integer>
+			<key>ypos</key>
+			<integer>680</integer>
 		</dict>
 		<key>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</key>
 		<dict>
@@ -437,24 +514,35 @@ bundle_path("{query}")</string>
 		<key>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>5</integer>
+			<integer>8</integer>
 			<key>note</key>
 			<string>Reveal in finder</string>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>570</integer>
 			<key>ypos</key>
 			<integer>510</integer>
 		</dict>
 		<key>6CB99F87-0A6E-4A81-8CB7-F9D7DF05F464</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>5</integer>
+			<integer>8</integer>
 			<key>note</key>
 			<string>Launch in simulator</string>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>570</integer>
 			<key>ypos</key>
 			<integer>350</integer>
+		</dict>
+		<key>753DFEE2-5CC0-4314-98A4-AF62C8F9FF32</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
+			<key>note</key>
+			<string>Uninstall application</string>
+			<key>xpos</key>
+			<integer>570</integer>
+			<key>ypos</key>
+			<integer>680</integer>
 		</dict>
 		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
 		<dict>
@@ -472,7 +560,7 @@ bundle_path("{query}")</string>
 			<key>note</key>
 			<string>Launch simulator</string>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>570</integer>
 			<key>ypos</key>
 			<integer>170</integer>
 		</dict>
@@ -481,7 +569,7 @@ bundle_path("{query}")</string>
 			<key>xpos</key>
 			<integer>740</integer>
 			<key>ypos</key>
-			<integer>690</integer>
+			<integer>930</integer>
 		</dict>
 		<key>E80FA768-8C3B-464C-90DD-27307A0D8BD0</key>
 		<dict>
@@ -490,14 +578,14 @@ bundle_path("{query}")</string>
 			<key>note</key>
 			<string>Reset contents and settings</string>
 			<key>xpos</key>
-			<integer>520</integer>
+			<integer>570</integer>
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
 		<key>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>5</integer>
+			<integer>8</integer>
 			<key>xpos</key>
 			<integer>250</integer>
 			<key>ypos</key>

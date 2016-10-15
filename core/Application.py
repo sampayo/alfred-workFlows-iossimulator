@@ -44,7 +44,34 @@ def __bundlePathsIndex(deviceId):
 
 	return bundlePathsIndex
 
-def application_with_device_id(deviceId):
+def __apllication_with_info(info, applicationPath):
+	bundleIdentifier = info["CFBundleIdentifier"]
+	bundleDisplayName = info["CFBundleIdentifier"] if "CFBundleDisplayName" in info else info["CFBundleName"]
+	bundleShortVersion = info["CFBundleShortVersionString"]
+	bundleInfoDictionaryVersion = info["CFBundleInfoDictionaryVersion"]
+
+	icons = []
+	if "CFBundleIcons" in info:
+		if "CFBundlePrimaryIcon" in info["CFBundleIcons"]:
+			if "CFBundleIconFiles" in info["CFBundleIcons"]["CFBundlePrimaryIcon"]:
+				iconsNames = info["CFBundleIcons"]["CFBundlePrimaryIcon"]["CFBundleIconFiles"]
+				iconsNames.reverse()
+
+				for iconName in iconsNames:
+					pathGlob = glob.glob("{0}/{1}*.png".format(applicationPath, iconName))
+					if pathGlob:
+						icons.append(pathGlob[0])
+
+	application = Application(
+		bundleDisplayName,
+		bundleIdentifier,
+		bundleShortVersion,
+		bundleInfoDictionaryVersion,
+		applicationPath,
+		icons)
+	return application
+
+def applications_with_device_id(deviceId):
 	path = __builtpath(__applicationPath.format(deviceId))
 	listApplications = glob.glob(path)
 
@@ -52,32 +79,21 @@ def application_with_device_id(deviceId):
 	for applicationPath in listApplications:
 		infoplist = "{0}/info.plist".format(applicationPath)
 		info = biplist.readPlist(infoplist)
-		bundleIdentifier = info["CFBundleIdentifier"]
-		bundleDisplayName = info["CFBundleIdentifier"] if "CFBundleDisplayName" in info else info["CFBundleName"]
-		bundleShortVersion = info["CFBundleShortVersionString"]
-		bundleInfoDictionaryVersion = info["CFBundleInfoDictionaryVersion"]
-
-		icons = []
-		if "CFBundleIcons" in info:
-			if "CFBundlePrimaryIcon" in info["CFBundleIcons"]:
-				if "CFBundleIconFiles" in info["CFBundleIcons"]["CFBundlePrimaryIcon"]:
-					iconsNames = info["CFBundleIcons"]["CFBundlePrimaryIcon"]["CFBundleIconFiles"]
-					iconsNames.reverse()
-
-					for iconName in iconsNames:
-						pathGlob = glob.glob("{0}/{1}*.png".format(applicationPath, iconName))
-						if pathGlob:
-							icons.append(pathGlob[0])
-
-		applications.append(Application(
-			bundleDisplayName,
-			bundleIdentifier,
-			bundleShortVersion,
-			bundleInfoDictionaryVersion,
-			applicationPath,
-			icons))
+		applications.append(__apllication_with_info(info, applicationPath))
 
 	return applications
+
+def application_with_device_and_bundle(deviceId, bundleId):
+	path = __builtpath(__applicationPath.format(deviceId))
+	listApplications = glob.glob(path)
+
+	for applicationPath in listApplications:
+		infoplist = "{0}/info.plist".format(applicationPath)
+		info = biplist.readPlist(infoplist)
+		if info["CFBundleIdentifier"] == bundleId:
+			return __apllication_with_info(info, applicationPath)
+
+	return None	
 
 def bundle_path(deviceId, bundleId):
 	return __bundlePathsIndex(deviceId)[bundleId]
@@ -87,7 +103,7 @@ def __all_application():
 	applications = []
 
 	for device in allDevices:
-		applications = applications + (application_with_device_id(device.udid))
+		applications = applications + (applications_with_device_id(device.udid))
 
 	return applications
 

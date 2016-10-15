@@ -12,6 +12,16 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>6CB99F87-0A6E-4A81-8CB7-F9D7DF05F464</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Launch in simulator</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -22,7 +32,19 @@
 			</dict>
 		</array>
 		<key>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</key>
+		<array/>
+		<key>6CB99F87-0A6E-4A81-8CB7-F9D7DF05F464</key>
 		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>493B8D97-6C65-4389-B746-AA06E8DF6AA9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 			<dict>
 				<key>destinationuid</key>
 				<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
@@ -38,21 +60,21 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7F3196CF-981B-42F5-9778-87D99D4BEF3D</string>
-				<key>modifiers</key>
-				<integer>524288</integer>
-				<key>modifiersubtext</key>
-				<string>Launch simulator</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>E80FA768-8C3B-464C-90DD-27307A0D8BD0</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Reset contents and settings</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F3196CF-981B-42F5-9778-87D99D4BEF3D</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Launch simulator</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -120,14 +142,59 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>import iossimulator
+iossimulator.erase_device('{query}')</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E80FA768-8C3B-464C-90DD-27307A0D8BD0</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
-				<false/>
+				<true/>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>Launching {query} ...</string>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Simulator Reset</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
 				<key>title</key>
 				<string>Simulation Launched</string>
 			</dict>
@@ -161,51 +228,6 @@ iossimulator.launch_device('{query}')</string>
 			<string>7F3196CF-981B-42F5-9778-87D99D4BEF3D</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>import iossimulator
-iossimulator.erase_device('{query}')</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>3</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>E80FA768-8C3B-464C-90DD-27307A0D8BD0</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query} was reset</string>
-				<key>title</key>
-				<string>Simulator Reset</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -261,8 +283,8 @@ iossimulator.devices("{query}")
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>from iossimulator import bundle_path
-bundle_path("{query}")</string>
+				<string>from iossimulator import launch_application
+launch_application("{query}")</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -273,7 +295,7 @@ bundle_path("{query}")</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</string>
+			<string>6CB99F87-0A6E-4A81-8CB7-F9D7DF05F464</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -300,7 +322,7 @@ bundle_path("{query}")</string>
 				<string>Searching for {query}...</string>
 				<key>script</key>
 				<string>import iossimulator
-iossimulator.application_with_device_id("{query}")</string>
+iossimulator.applications_with_device_id("{query}")</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -342,6 +364,30 @@ iossimulator.application_with_device_id("{query}")</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>from iossimulator import bundle_path
+bundle_path("{query}")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>'{query}', {var:deviceId}</string>
 				<key>cleardebuggertext</key>
@@ -375,27 +421,40 @@ iossimulator.application_with_device_id("{query}")</string>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>770</integer>
+			<integer>750</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>10</integer>
 		</dict>
 		<key>493B8D97-6C65-4389-B746-AA06E8DF6AA9</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>770</integer>
+			<integer>750</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>170</integer>
 		</dict>
 		<key>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
 			<key>note</key>
 			<string>Reveal in finder</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>320</integer>
+			<integer>510</integer>
+		</dict>
+		<key>6CB99F87-0A6E-4A81-8CB7-F9D7DF05F464</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>note</key>
+			<string>Launch in simulator</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>350</integer>
 		</dict>
 		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
 		<dict>
@@ -415,7 +474,7 @@ iossimulator.application_with_device_id("{query}")</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>170</integer>
 		</dict>
 		<key>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</key>
 		<dict>
@@ -433,7 +492,7 @@ iossimulator.application_with_device_id("{query}")</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>10</integer>
 		</dict>
 		<key>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</key>
 		<dict>

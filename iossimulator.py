@@ -22,8 +22,9 @@ def launch_device(udid):
   devnull = open(os.devnull, 'w') # hiding the output
   subprocess.call(["xcrun", "instruments", "-w", udid], stdout=devnull, stderr=subprocess.STDOUT)
 
-  sys.stdout.write(deviceName)
-  sys.stdout.flush()
+  if deviceName:
+    sys.stdout.write("Launching {0}.".format(deviceName))
+    sys.stdout.flush()
 
 def erase_device(udid):
   device = Device.device_with_id(udid)
@@ -32,13 +33,14 @@ def erase_device(udid):
   devnull = open(os.devnull, 'w') # hiding the output
   subprocess.call(["xcrun", "simctl", "erase", udid], stdout=devnull, stderr=subprocess.STDOUT)
 
-  sys.stdout.write(deviceName)
-  sys.stdout.flush()
+  if deviceName:
+    sys.stdout.write("{0} was reset".format(deviceName))
+    sys.stdout.flush()
 
-def application_with_device_id(name=None):
+def applications_with_device_id(name=None):
   deviceId = workflow.get_variable('deviceId')
 
-  applications = Application.application_with_device_id(deviceId)
+  applications = Application.applications_with_device_id(deviceId)
 
   workflowApplications = []
   for application in applications:
@@ -56,6 +58,21 @@ def bundle_path(bundleId):
   deviceId = workflow.get_variable('deviceId')
   path = Application.bundle_path(deviceId, bundleId)
   subprocess.call(["open", "-R", path])
+
+def launch_application(bundleId):
+  deviceId = workflow.get_variable('deviceId')
+
+  # Launch simulator
+  devnull = open(os.devnull, 'w') # hiding the output
+  subprocess.call(["xcrun", "instruments", "-w", deviceId], stdout=devnull, stderr=subprocess.STDOUT)
+
+  # Launch app in simulator
+  subprocess.call(["xcrun", "simctl", "launch", "-w", deviceId, bundleId], stdout=devnull, stderr=subprocess.STDOUT)
+
+  application = Application.application_with_device_and_bundle(deviceId, bundleId)
+  if application is not None:
+    sys.stdout.write("Launching {0}.".format(application.bundleDisplayName))
+    sys.stdout.flush()  
 
 if __name__ == '__main__':
   devices()

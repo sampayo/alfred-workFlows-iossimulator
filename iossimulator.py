@@ -52,6 +52,10 @@ def application_with_device_id(name=None):
       uid=application.bundleID))
   workflow.Item.generate_output(workflowApplications)
 
+def bundle_path(bundleId):
+  deviceId = workflow.get_variable('deviceId')
+  path = Application.bundle_path(deviceId, bundleId)
+  subprocess.call(["open", "-R", path])
 
 if __name__ == '__main__':
   devices()

@@ -79,6 +79,9 @@ def application_with_device_id(deviceId):
 
 	return applications
 
+def bundle_path(deviceId, bundleId):
+	return __bundlePathsIndex(deviceId)[bundleId]
+
 def __all_application():
 	allDevices = devices()
 	applications = []

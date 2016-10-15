@@ -12,6 +12,19 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -243,6 +256,30 @@ iossimulator.devices("{query}")
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>from iossimulator import bundle_path
+bundle_path("{query}")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -288,23 +325,6 @@ iossimulator.application_with_device_id("{query}")</string>
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>'{query}', {var:deviceId}</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
 				<string></string>
 				<key>variables</key>
 				<dict>
@@ -316,6 +336,23 @@ iossimulator.application_with_device_id("{query}")</string>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {var:deviceId}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -331,7 +368,7 @@ iossimulator.application_with_device_id("{query}")</string>
 			<key>xpos</key>
 			<integer>320</integer>
 			<key>ypos</key>
-			<integer>290</integer>
+			<integer>440</integer>
 		</dict>
 		<key>3A6EAEF5-53A5-4A74-B0EB-D242039FAE09</key>
 		<dict>
@@ -340,7 +377,7 @@ iossimulator.application_with_device_id("{query}")</string>
 			<key>xpos</key>
 			<integer>770</integer>
 			<key>ypos</key>
-			<integer>130</integer>
+			<integer>160</integer>
 		</dict>
 		<key>493B8D97-6C65-4389-B746-AA06E8DF6AA9</key>
 		<dict>
@@ -350,6 +387,15 @@ iossimulator.application_with_device_id("{query}")</string>
 			<integer>770</integer>
 			<key>ypos</key>
 			<integer>10</integer>
+		</dict>
+		<key>645AC4D4-CF08-42F9-B301-9B2F34B8F24F</key>
+		<dict>
+			<key>note</key>
+			<string>Reveal in finder</string>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>320</integer>
 		</dict>
 		<key>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</key>
 		<dict>
@@ -364,6 +410,8 @@ iossimulator.application_with_device_id("{query}")</string>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
+			<key>note</key>
+			<string>Launch simulator</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
@@ -372,27 +420,29 @@ iossimulator.application_with_device_id("{query}")</string>
 		<key>B44E7E2D-7FC7-4320-8DE6-623C4DE07059</key>
 		<dict>
 			<key>xpos</key>
-			<integer>610</integer>
+			<integer>740</integer>
 			<key>ypos</key>
-			<integer>310</integer>
+			<integer>690</integer>
 		</dict>
 		<key>E80FA768-8C3B-464C-90DD-27307A0D8BD0</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
+			<key>note</key>
+			<string>Reset contents and settings</string>
 			<key>xpos</key>
 			<integer>520</integer>
 			<key>ypos</key>
-			<integer>130</integer>
+			<integer>160</integer>
 		</dict>
 		<key>E99D5702-2E75-430B-8E2B-D0FE4FD8F77C</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<integer>220</integer>
+			<integer>250</integer>
 			<key>ypos</key>
-			<integer>320</integer>
+			<integer>470</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

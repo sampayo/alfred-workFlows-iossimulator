@@ -41,6 +41,7 @@ def applications_with_device_id(name=None):
   deviceId = workflow.get_variable('deviceId')
 
   applications = Application.applications_with_device_id(deviceId)
+  applications = applications if name is None else [d for d in applications if d.bundleDisplayName.lower().find(name.lower()) >= 0]
 
   workflowApplications = []
   for application in applications:

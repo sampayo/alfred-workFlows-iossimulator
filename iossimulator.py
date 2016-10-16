@@ -69,6 +69,9 @@ def applications_with_device_id(name=None):
 
   workflowApplications = []
   for application in applications:
+    modifierSubtitles = {
+      workflow.ItemMod.Shift : application.application_detail()
+      }
     workflowApplications.append(workflow.Item(
       title=application.bundleDisplayName,
       subtitle="Reveal in find viewer",
@@ -76,7 +79,9 @@ def applications_with_device_id(name=None):
       arg=application.bundleID,
       autocomplete=application.bundleDisplayName,
       valid=True,
-      uid=application.bundleID))
+      uid=application.bundleID,
+      modifierSubtitles=modifierSubtitles)
+    )
   workflow.Item.generate_output(workflowApplications)
 
 def bundle_path(bundleId):

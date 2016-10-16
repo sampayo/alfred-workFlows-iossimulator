@@ -9,22 +9,53 @@ __applicationPath = "Library/Developer/CoreSimulator/Devices/{0}/data/Containers
 __bundlePlistPath = "Library/Developer/CoreSimulator/Devices/{0}/data/Containers/Data/Application/*/" + __metadataplist
 
 class Application():
-	def __init__(self, bundleDisplayName, bundleID, bundleShortVersion, bundleVersion, path, icons):
+	def __init__(self, bundleDisplayName, bundleID, bundleShortVersion, bundleVersion, path, size, icons):
 	    self.bundleDisplayName = bundleDisplayName
 	    self.bundleID = bundleID
 	    self.bundleShortVersion = bundleShortVersion
 	    self.bundleVersion = bundleVersion
 	    self.path = path
+	    self.size = size
 	    self.icons = icons if icons is not None else []
 
+	def application_detail(self):
+		return "{0}, v{1} ({2}), {3}".format(
+			self.bundleID,
+			self.bundleShortVersion,
+			self.bundleVersion,
+			self.size_formatted(),
+			)
+
+	def size_formatted(self):
+		units = ("B.", "KB.", "MB.", "GB")
+
+		def __get_size(size, unitIndex):
+			if size >= 1024.0 and (len(units) - 1) > unitIndex:
+				size = size / 1024.0
+				return __get_size(size, unitIndex + 1)
+
+			return (size, unitIndex)
+
+		t = __get_size(self.size, 0)
+		return "{0:,.2f} {1}".format(t[0], units[t[1]])
+
 	def description(self):
-		return "{0}, bundleId: {1}, short version {2}, bundle version {3}, path {4}, icon \n{5}".format(
+		return "{0}, bundleId: {1}, short version {2}({3}), path {4}, size:{5} icon \n{6}".format(
 			self.bundleDisplayName,
 			self.bundleID,
 			self.bundleShortVersion,
 			self.bundleVersion,
 			self.path,
+			self.size_formatted(),
 			"\n".join((d for d in self.icons)))
+
+def __get_size(start_path):
+	total_size = 0
+	for dirpath, dirnames, filenames in os.walk(start_path):
+	    for f in filenames:
+	        fp = os.path.join(dirpath, f)
+	        total_size += os.path.getsize(fp)
+	return total_size
 
 def __builtpath(path):
 	return os.path.join(os.path.expanduser("~"), path)
@@ -45,9 +76,9 @@ def __bundlePathsIndex(deviceId):
 
 def __apllication_with_info(info, applicationPath):
 	bundleIdentifier = info["CFBundleIdentifier"]
-	bundleDisplayName = info["CFBundleIdentifier"] if "CFBundleDisplayName" in info else info["CFBundleName"]
+	bundleDisplayName = info["CFBundleDisplayName"] if "CFBundleDisplayName" in info else info["CFBundleName"]
 	bundleShortVersion = info["CFBundleShortVersionString"]
-	bundleInfoDictionaryVersion = info["CFBundleInfoDictionaryVersion"]
+	BundleVersion = info["CFBundleVersion"]
 
 	icons = []
 	if "CFBundleIcons" in info:
@@ -65,8 +96,9 @@ def __apllication_with_info(info, applicationPath):
 		bundleDisplayName,
 		bundleIdentifier,
 		bundleShortVersion,
-		bundleInfoDictionaryVersion,
+		BundleVersion,
 		applicationPath,
+		__get_size(applicationPath),
 		icons)
 	return application
 

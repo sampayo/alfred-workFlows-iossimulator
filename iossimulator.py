@@ -5,6 +5,17 @@ import sys
 import core.device as Device
 import core.application as Application
 
+def __icon(device):
+  ipadon = "assets/ipadon.png"
+  ipadoff = "assets/ipadoff.png"
+  iphoneon = "assets/iphoneon.png"
+  iphoneoff = "assets/iphoneoff.png"
+
+  if device.type == Device.DeviceType.IPhone:
+    return iphoneon if device.state == Device.DeviceState.Booted else iphoneoff
+  else:
+    return ipadon if device.state == Device.DeviceState.Booted else ipadoff
+
 def devices(name=None):
   devices = Device.devices()
   devices = devices if name is None else [d for d in devices if d.name.lower().find(name.lower()) >= 0]
@@ -16,6 +27,7 @@ def devices(name=None):
     workflowDevices.append(workflow.Item(
       title=device.name,
       subtitle=device.runtime,
+      icon=__icon(device),
       arg=device.udid,
       autocomplete=device.name,
       valid=True,

@@ -1,5 +1,6 @@
 import json
 import subprocess
+from application import number_of_applications
 
 class DeviceType:
   IPhone, IPad, Other = ("iPhone", "iPad", "other")
@@ -28,14 +29,25 @@ class Device:
     self.state = state
     self.runtime = runtime 
     self.type = deviceType
+    self.numberOfApplications = number_of_applications(udid)
 
   def description(self):
-    return "name: {0} id: {1} state: {2} runtime: {3} type: {4}".format(
+    return "name: {0} id: {1} state: {2} runtime: {3} type: {4} number of applications: {5}".format(
       self.name, 
       self.udid, 
       self.state, 
       self.runtime, 
-      self.type)
+      self.type,
+      self.numberOfApplications,
+      )
+
+  def applications_description(self):
+    if self.numberOfApplications == 0:
+      return "No applications installed"
+    elif self.numberOfApplications == 1:
+      return "1 application installed"
+    else:
+      return "{} applications installed".format(self.numberOfApplications)
 
 def devices():
   devicesJson = subprocess.check_output(["/usr/bin/xcrun", "simctl", "list", "-j", "devices"])

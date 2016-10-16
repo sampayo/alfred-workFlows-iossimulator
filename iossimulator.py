@@ -23,7 +23,11 @@ def devices(name=None):
   workflowDevices = []
 
   for device in devices:
-    modifierSubtitles = { workflow.ItemMod.Ctrl : device.runtime }
+
+    modifierSubtitles = {
+      workflow.ItemMod.Ctrl : device.runtime,
+      workflow.ItemMod.Shift : device.applications_description()
+      }
     workflowDevices.append(workflow.Item(
       title=device.name,
       subtitle=device.runtime,

@@ -3,7 +3,6 @@ import os
 import glob
 from shutil import rmtree
 import biplist.biplist as biplist
-from device import devices
 
 __metadataplist = ".com.apple.mobile_container_manager.metadata.plist"
 __applicationPath = "Library/Developer/CoreSimulator/Devices/{0}/data/Containers/Bundle/Application/*/*.app"
@@ -83,6 +82,11 @@ def applications_with_device_id(deviceId):
 
 	return applications
 
+def number_of_applications(deviceId):
+	path = __builtpath(__applicationPath.format(deviceId))
+	listApplications = glob.glob(path)
+	return len(listApplications)
+
 def application_with_device_and_bundle(deviceId, bundleId):
 	path = __builtpath(__applicationPath.format(deviceId))
 	listApplications = glob.glob(path)
@@ -118,17 +122,8 @@ def reset_data(deviceId, bundleId):
 	__delete_content(libraryPath)
 	__delete_content(tmpPath)
 
-def __all_application():
-	allDevices = devices()
-	applications = []
-
-	for device in allDevices:
-		applications = applications + (applications_with_device_id(device.udid))
-
-	return applications
-
 if __name__ == '__main__':
-	apps = __all_application();
+	apps = applications_with_device_id("3A6CC338-F3AF-4AE9-8E4E-8F6DCC7706DD");
 	print("Applications: {0}".format(len(apps)))
 	print("\n".join((a.description() for a in apps)))
 

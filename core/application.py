@@ -77,8 +77,8 @@ def __bundlePathsIndex(deviceId):
 def __apllication_with_info(info, applicationPath):
 	bundleIdentifier = info["CFBundleIdentifier"]
 	bundleDisplayName = info["CFBundleDisplayName"] if "CFBundleDisplayName" in info else info["CFBundleName"]
-	bundleShortVersion = info["CFBundleShortVersionString"]
-	BundleVersion = info["CFBundleVersion"]
+	bundleShortVersion = info["CFBundleShortVersionString"] if "CFBundleShortVersionString" in info else "Unknown"
+	BundleVersion = info["CFBundleVersion"] if "CFBundleVersion" in info else "Unknown"
 
 	icons = []
 	if "CFBundleIcons" in info:

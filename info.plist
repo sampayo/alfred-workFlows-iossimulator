@@ -168,7 +168,7 @@
 	<key>createdby</key>
 	<string>Ricardo Sampayo</string>
 	<key>description</key>
-	<string></string>
+	<string>A simple workflow for fast access to your iOS Simulators and apps</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -500,7 +500,7 @@ reset_data_application("{query}")</string>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>Contents of Documents, Library and tmp were removed.</string>
+				<string>Content of Documents, Library and tmp were removed.</string>
 				<key>title</key>
 				<string>{query} was reset</string>
 			</dict>

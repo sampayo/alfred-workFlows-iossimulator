@@ -74,7 +74,7 @@ def applications_with_device_id(name=None):
       }
     workflowApplications.append(workflow.Item(
       title=application.bundleDisplayName,
-      subtitle="Reveal in find viewer",
+      subtitle="Reveal content in Finder",
       icon= application.icons[0] if application.icons else "assets/noicon.png",
       arg=application.bundleID,
       autocomplete=application.bundleDisplayName,

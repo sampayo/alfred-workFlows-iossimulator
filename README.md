@@ -2,7 +2,7 @@
 
 A simple workflow for fast access to your iOS Simulators and apps. It saves you time during iOS development when you have to deal with Simulators' folder structure.
 ## 本版本已修正
-  修改在Xcode 10 版本下获取devices列表后的解析错误
+  修改在Xcode 10 版本下获取devices列表后的解析错误  
   添加已启动的模拟器默认显示在前面
 
 ## Installation

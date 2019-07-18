@@ -20,7 +20,7 @@ def __device_state_with_name(state):
   elif state == "Creating":
     return DeviceState.Creating    
   else:
-    return DeviceState.Unknown        
+    return DeviceState.Unknown
 
 class Device:
   def __init__(self, name, udid, state, runtime, deviceType):
@@ -52,16 +52,20 @@ class Device:
 def devices():
   devicesJson = subprocess.check_output(["/usr/bin/xcrun", "simctl", "list", "-j", "devices"])
   allDevices = json.loads(devicesJson)["devices"]
-  iosDevices = [device for device in allDevices.items() if (device[0].find("iOS") >= 0)]
-
+  iosDevices = {}
   devices = []
-  for runtime, rawDevices in iosDevices:
-    devicesAvailables = (d for d in rawDevices if d["availability"] == "(available)") # only the available devices
-    for rawDevice in devicesAvailables:
-      device = Device(rawDevice["name"], rawDevice["udid"], 
-        __device_state_with_name(rawDevice["state"]), runtime,
-        __device_type_with_name(rawDevice["name"]))
-      devices.append(device);
+  for device, values in allDevices.items():
+    if (device.find("iOS") >= 0):
+        runtime = device.split(".")[-1].replace("-", " ", 1).replace("-", ".")
+        for rawDevice in values:
+            if rawDevice["isAvailable"] == True:
+              device = Device(rawDevice["name"], rawDevice["udid"], 
+                __device_state_with_name(rawDevice["state"]), runtime,
+                __device_type_with_name(rawDevice["name"]))
+              if device.state == DeviceState.Booted:
+                  devices.insert(0, device)
+              else:
+                  devices.append(device)
 
   return devices
 

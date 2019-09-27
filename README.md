@@ -5,7 +5,7 @@ A simple workflow for fast access to your iOS Simulators and apps. It saves you 
 
 ## Installation
 
-Download and open file using [Alfred 3^][2]. You need to [have the Powerpack][3] to use this workflow.
+[Download the version 1.0.1][workflow] and open file using [Alfred 3^][alfred]. You need to [have the Powerpack][powerpack] to use this workflow.
 
 ## Usage
 
@@ -31,5 +31,6 @@ Download and open file using [Alfred 3^][2]. You need to [have the Powerpack][3]
 
 
 [1]:media/ios-simulator.gif
-[2]:http://www.alfredapp.com
-[3]:http://www.alfredapp.com/powerpack/buy/
+[alfred]:http://www.alfredapp.com
+[powerpack]:http://www.alfredapp.com/powerpack/buy/
+[workflow]:https://github.com/sampayo/alfred-workFlows-iossimulator/releases/download/V1.0.1/iOS.Simulator.zip

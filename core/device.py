@@ -12,6 +12,15 @@ def __device_type_with_name(name):
 class DeviceState:
   Unknown, Shutdown, Booted, Creating = ("unknown", "shutdown", "booted", "creating")
 
+def __device_is_available(device):
+  return (
+    ('availability' in device and device['availability'] == "(available)")
+    or ('isAvailable' in device and device['isAvailable'] == True) # XCode 11^
+  )
+
+def __prepare_runtime(runtime):
+  return runtime.split(".")[-1].replace("-", " ", 1).replace("-", ".")
+
 def __device_state_with_name(state):
   if state == "Shutdown":
     return DeviceState.Shutdown
@@ -56,12 +65,16 @@ def devices():
 
   devices = []
   for runtime, rawDevices in iosDevices:
-    devicesAvailables = (d for d in rawDevices if d["availability"] == "(available)") # only the available devices
+    devicesAvailables = (d for d in rawDevices if __device_is_available(d))
     for rawDevice in devicesAvailables:
-      device = Device(rawDevice["name"], rawDevice["udid"], 
-        __device_state_with_name(rawDevice["state"]), runtime,
-        __device_type_with_name(rawDevice["name"]))
-      devices.append(device);
+      device = Device(
+        rawDevice["name"],
+        rawDevice["udid"], 
+        __device_state_with_name(rawDevice["state"]),
+        __prepare_runtime(runtime),
+        __device_type_with_name(rawDevice["name"])
+      )
+      devices.append(device)
 
   return devices
 

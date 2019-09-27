@@ -30,7 +30,7 @@ def devices(name=None):
       }
     workflowDevices.append(workflow.Item(
       title=device.name,
-      subtitle=device.runtime,
+      subtitle=device.runtime + " (" + device.udid + ")",
       icon=__icon(device),
       arg=device.udid,
       autocomplete=device.name,

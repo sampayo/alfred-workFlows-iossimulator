@@ -74,7 +74,7 @@ def __bundlePathsIndex(deviceId):
 
 	return bundlePathsIndex
 
-def __apllication_with_info(info, applicationPath):
+def __application_with_info(info, applicationPath):
 	bundleIdentifier = info["CFBundleIdentifier"]
 	bundleDisplayName = info["CFBundleDisplayName"] if "CFBundleDisplayName" in info else info["CFBundleName"]
 	bundleShortVersion = info["CFBundleShortVersionString"] if "CFBundleShortVersionString" in info else "Unknown"
@@ -110,7 +110,7 @@ def applications_with_device_id(deviceId):
 	for applicationPath in listApplications:
 		infoplist = "{0}/info.plist".format(applicationPath)
 		info = biplist.readPlist(infoplist)
-		applications.append(__apllication_with_info(info, applicationPath))
+		applications.append(__application_with_info(info, applicationPath))
 
 	return applications
 
@@ -127,7 +127,7 @@ def application_with_device_and_bundle(deviceId, bundleId):
 		infoplist = "{0}/info.plist".format(applicationPath)
 		info = biplist.readPlist(infoplist)
 		if info["CFBundleIdentifier"] == bundleId:
-			return __apllication_with_info(info, applicationPath)
+			return __application_with_info(info, applicationPath)
 
 	return None	
 

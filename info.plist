@@ -270,6 +270,12 @@ iossimulator.launch_device('{query}')</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -309,7 +315,7 @@ iossimulator.devices("{query}")
 			<key>uid</key>
 			<string>7BE31CC1-81CD-4F2D-A5BF-B9A8F3C5FC4F</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -340,6 +346,12 @@ launch_application("{query}")</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -377,7 +389,7 @@ iossimulator.applications_with_device_id("{query}")</string>
 			<key>uid</key>
 			<string>229FF4ED-D9D3-4927-B4F8-7148E4675F21</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -650,6 +662,10 @@ reset_data_application("{query}")</string>
 			<integer>440</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.1</string>
 	<key>webaddress</key>
 	<string>ricardosampayo.com</string>
 </dict>

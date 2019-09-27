@@ -5,7 +5,7 @@ A simple workflow for fast access to your iOS Simulators and apps. It saves you 
 
 ## Installation
 
-Download and open file using [Alfred 3][2]. You need to [have the Powerpack][3] to use this workflow.
+Download and open file using [Alfred 3^][2]. You need to [have the Powerpack][3] to use this workflow.
 
 ## Usage
 

@@ -1,6 +1,6 @@
 # iOS Simulator Alfred Workflow
 
-A simple workflow for fast access to your iOS Simulators and apps. It saves you time during iOS development when you have to deal with Simulators' folder structure.
+A simple workflow for fast access to your iOS Simulators and apps. It saves you time during iOS development when you have to deal with Simulators' folder structure
 
 
 ## Installation
